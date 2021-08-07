@@ -1,0 +1,16 @@
+<New Experiences>
+
+    Today records my new work experience in XY Company.
+It is a leading company in AI research and Computer Vision.
+I've studied so hard to be accepted into the company, 
+and I hope it would become a great experiences for me.
+What, Imposter Syndrome? 
+Well, I kind of have it, because I thought I might act like a stupid man in front of them,
+but I should accept this kind of emotion and move on, 
+because I know I'm improving each day.
+I hope one day I can become a great researcher on the AI field.
+(Don't take my words seriously, these words are just placeholder.)
+(Or are they not? who knows)
+   
+Testing appending mode.....
+Done.

@@ -1,0 +1,14 @@
+Enable taking note at current time. (Done)
+Viewing existing notes. (Done)
+Edit existing note. (Done)
+Publish to Github. (Done)
+
+view_events function need fix. !!! (Done)
+In Edit existing note, figure a way to edit events.csv (to change LastEdit) 
+    and let user choose which line to change. (Done)
+
+A titles file: titles.txt
+An events file: events.csv
+Format of CSV:
+    Title EventSummary Time RecordTime
+Event filename is "{Title}_{Time}.txt"
