@@ -1,6 +1,7 @@
 Enable taking note at current time. (Done)
 Viewing existing notes. (Done)
 Edit existing note. (Done)
+Enable delete note. (Done)
 Publish to Github. (Done)
 
 view_events function need fix. !!! (Done)

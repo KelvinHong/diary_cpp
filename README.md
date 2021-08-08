@@ -4,6 +4,8 @@
 
 This diary enable user to record events on multiple titles. 
 
+This program probably only works on Windows, since the file-managing API is Windows related.
+
 ## Usage
 
 Explain by using examples should be a good idea.
@@ -26,7 +28,9 @@ The csv file `events.csv` acts as a master file to record main details of the ev
 The `LastEdtit` column record the Unix-second time for where the user last created/edited the textfile.
 The `Time` column record whenever the textfile first recorded, hence will not be changed after edit.
 
-Currently, the application doesn't support deletion, filtering and sorting functions. They might be included in later updates. 
+*Update on 8 Aug 2021*: Events deletions have been added in the features.
+
+Currently, the application doesn't support filtering and sorting functions. They might be included in later updates. 
 
 ## The Author
 

@@ -7,6 +7,8 @@
 #include <windows.h>
 #include <iomanip>
 #include <numeric>
+#include <assert.h>
+#include <filesystem>
 
 // Storing different titles;
 std::vector<std::string> _titles;
@@ -369,6 +371,51 @@ void edit_events(){
     }
 }
 
+void delete_events(){
+    int row = view_titles(), choice;
+    std::cout << "Which event do you want to delete? Input the index." << std::endl;
+    std::cin >> choice;
+    std::cin.ignore();
+    if (!(1<=choice and choice<=row)){
+        std::cout << "Index out of range. Abort." << std::endl;
+        return;
+    }
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 12);
+    std::cout << "Do you really want to delete number " << choice << " event?" << std::endl;
+    std::cout << "Input 1 to confirm, 0 to abort." << std::endl;
+    SetConsoleTextAttribute(hConsole, 15);
+    int confirm;
+    std::cin >> confirm;
+    std::cin.ignore();
+    if (!confirm){
+        std::cout << "The event is preserved." << std::endl;
+        return;
+    }
+    // Extract file information.
+    std::string title = csv_at("events.csv", choice, 1); 
+    std::string unix_time = csv_at("events.csv", choice, 3); 
+    std::string file_loc = "data/"+title+"_"+unix_time+".txt";
+    if (DeleteFileA(file_loc.c_str()))
+        std::cout << "The file " << file_loc << " successfully deleted.\n";
+    
+    // Deleting row of csv file.
+    std::vector<std::string> lines;
+    std::ifstream csv;
+    csv.open("events.csv");
+    std::string line;
+    while (std::getline(csv, line)){
+        lines.push_back(line);
+    }
+    lines.erase(lines.begin() + choice);
+    csv.close();
+    std::ofstream out;
+    out.open("events.csv");
+    for (int i=0; i<=lines.size()-1; i++){
+        out << lines.at(i) << std::endl;
+    }
+    out.close();
+}
 
 int main(){
     prepare_data();
@@ -380,15 +427,15 @@ int main(){
         new_eventsfile << "Title,EventSummary,Time,LastEdit\n";
         new_eventsfile.close();
     }
-    
 
-    std::cout << "Hi Kelvin Hong." << std::endl;
+    std::cout << "Hi User." << std::endl;
     std::cout << "Choose one option:" << std::endl;
     std::cout << "0. Manual" << std::endl;
     std::cout << "1. Create new titles." << std::endl;
     std::cout << "2. Record new event on existing title." << std::endl;
     std::cout << "3. View existing events." << std::endl;
     std::cout << "4. Edit existing events." << std::endl;
+    std::cout << "5. Delete existing events." << std::endl;
     int main_option;
     std::cin >> main_option;
     std::cin.ignore();
@@ -406,5 +453,8 @@ int main(){
     }
     else if (main_option == 4){
         edit_events();
+    }
+    else if (main_option == 5){
+        delete_events();
     }
 }
